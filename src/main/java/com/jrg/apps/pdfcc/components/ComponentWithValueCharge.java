@@ -1,4 +1,4 @@
-package com.jrg.pdfcc.components;
+package com.jrg.apps.pdfcc.components;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,8 +13,11 @@ import lombok.Getter;
 @Component
 public class ComponentWithValueCharge {
 
-    @Value("${msg.hello}")
-    @Getter
-    private String mssg;
+	@Value("${msg.hello}")
+	@Getter
+	private String mssg;
 
+	public void throwException() throws Exception {
+		throw new Exception();
+	}
 }

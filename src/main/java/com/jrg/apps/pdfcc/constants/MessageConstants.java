@@ -1,7 +1,7 @@
 /**
  * The Messages
  */
-package com.jrg.pdfcc.constants;
+package com.jrg.apps.pdfcc.constants;
 
 /**
  * The MessageConstants
@@ -10,6 +10,9 @@ package com.jrg.pdfcc.constants;
  */
 public class MessageConstants {
 
-    // App start msg
+    // App constants
     public static String APP_START_MSG = "app.startMsg";
+    
+    // AOP constants
+    public static String AOP_EXCEPCION_LANZADA = "aop.excepcionLanzada";
 }

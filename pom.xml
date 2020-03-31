@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Artifact properties -->
-	<groupId>com.jrg</groupId>
+	<groupId>com.jrg.apps</groupId>
 	<artifactId>pdfcc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PdfCC a simple PDF document manager</name>
+	<name>PdfCC - a simple PDF documents manager</name>
 	<url>https://github.com/javierrgonz/pdfCC.git</url>
 
 	<!-- Propiedades -->
@@ -18,9 +18,9 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<org.springframework.version>5.2.5.RELEASE</org.springframework.version>
-		<org.apache.logging.log4j.version>2.8.2</org.apache.logging.log4j.version>
 		<org.projectlombok.version>1.16.16</org.projectlombok.version>
 		<org.aspectj.version>1.8.9</org.aspectj.version>
+		<log.version>2.0.0-RC1</log.version>
 	</properties>
 
 	<!-- Dependencias -->
@@ -58,24 +58,67 @@
 			<version>${org.aspectj.version}</version>
 		</dependency>
 
-		<!-- Log4j -->
+		<!-- tinyLog -->
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
+			<groupId>org.tinylog</groupId>
+			<artifactId>tinylog-api</artifactId>
+			<version>${log.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
+			<groupId>org.tinylog</groupId>
+			<artifactId>tinylog-impl</artifactId>
+			<version>${log.version}</version>
 		</dependency>
 
 	</dependencies>
 
+	<!-- Profile configuration -->
+	<profiles>
+		<!-- The configuration of the development profile -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Specifies the build.profile.id property that must be equal than 
+					the name of the directory that contains the profile specific configuration 
+					file -->
+				<build.profile.id>dev</build.profile.id>
+			</properties>
+		</profile>
+		<!-- The configuration of the production profile -->
+		<profile>
+			<id>prod</id>
+			<properties>
+				<build.profile.id>prod</build.profile.id>
+			</properties>
+		</profile>
+	</profiles>
+
 	<!-- Build management -->
 	<build>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
-				defaults (may be moved to parent pom) -->
+
+		<!-- Ensures that the config.properties file is always loaded from the 
+			configuration directory of the active Maven profile. -->
+		<filters>
+			<filter>src/main/resources/profiles/${build.profile.id}/config_${build.profile.id}.properties</filter>
+			<filter>src/main/resources/profiles/${build.profile.id}/tinylog_${build.profile.id}.properties</filter>
+		</filters>
+
+		<!-- Placeholders that are found from the files located in the configured 
+			resource directories are replaced with the property values found from the 
+			profile specific configuration file. -->
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<!-- lock down plugins versions to avoid using Maven defaults (may be moved 
+			to parent pom) -->
+		<pluginManagement>
 			<plugins>
 				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>

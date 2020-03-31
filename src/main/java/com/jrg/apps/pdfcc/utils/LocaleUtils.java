@@ -1,16 +1,12 @@
 /**
  * The LocaleUtils
  */
-package com.jrg.pdfcc.utils;
+package com.jrg.apps.pdfcc.utils;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import com.jrg.pdfcc.constants.ConfigConstants;
+import com.jrg.apps.pdfcc.constants.ConfigConstants;
 
 /**
  * The LocaleUtils
@@ -19,10 +15,8 @@ import com.jrg.pdfcc.constants.ConfigConstants;
  */
 public class LocaleUtils {
 
-    // The default locale
+    /** The default locale **/
     private static Locale defaultLocale;
-
-    private static Logger logger = LogManager.getLogger();
 
     /**
      * Obtains the default locale as set on settings
@@ -37,9 +31,8 @@ public class LocaleUtils {
 	}
 
 	// Else get locale from properties
-	String localeProp = MainUtils.getStringProperty(ConfigConstants.DEFAULT_LANGUAGE);
-	List<Locale> locales = Arrays.asList(Locale.getAvailableLocales());
-	for (Locale locale : locales) {
+	String localeProp = MainUtils.getProperty(ConfigConstants.DEFAULT_LANGUAGE);
+	for (Locale locale : Arrays.asList(Locale.getAvailableLocales())) {
 	    if (locale.toLanguageTag().equals(localeProp)) {
 		LocaleUtils.defaultLocale = locale;
 	    }
