@@ -1,4 +1,4 @@
-package com.jrg.apps.pdfcc.components;
+package com.jrg.apps.pdfcc.beans;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

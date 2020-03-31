@@ -1,5 +1,5 @@
 /**
- * The LoggingAspect
+ * The HandleExceptionAspect
  */
 package com.jrg.apps.pdfcc.aspects;
 
@@ -15,7 +15,7 @@ import com.jrg.apps.pdfcc.utils.LoggerUtils;
 import com.jrg.apps.pdfcc.utils.MessageUtils;
 
 /**
- * The LoggingAspect
+ * The HandleExceptionAspect
  * 
  * @author Javier RG
  *

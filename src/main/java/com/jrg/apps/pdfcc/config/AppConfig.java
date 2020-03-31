@@ -11,7 +11,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
-import com.jrg.apps.pdfcc.components.ComponentWithValueCharge;
+import com.jrg.apps.pdfcc.beans.ComponentWithValueCharge;
 
 /**
  * The AppConfig
@@ -20,7 +20,7 @@ import com.jrg.apps.pdfcc.components.ComponentWithValueCharge;
  */
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan("com.jrg.apps.pdfcc.components")
+@ComponentScan("com.jrg.apps.pdfcc.beans")
 @ComponentScan("com.jrg.apps.pdfcc.aspects")
 @PropertySource("classpath:config.properties")
 public class AppConfig {

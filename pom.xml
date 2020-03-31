@@ -12,7 +12,7 @@
 	<name>PdfCC - a simple PDF documents manager</name>
 	<url>https://github.com/javierrgonz/pdfCC.git</url>
 
-	<!-- Propiedades -->
+	<!-- Propiedades & Versiones -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -21,6 +21,7 @@
 		<org.projectlombok.version>1.16.16</org.projectlombok.version>
 		<org.aspectj.version>1.8.9</org.aspectj.version>
 		<log.version>2.0.0-RC1</log.version>
+		<javaFX.version>11</javaFX.version>
 	</properties>
 
 	<!-- Dependencias -->
@@ -68,6 +69,14 @@
 			<groupId>org.tinylog</groupId>
 			<artifactId>tinylog-impl</artifactId>
 			<version>${log.version}</version>
+		</dependency>
+
+		<!-- JavaFX -->
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx</artifactId>
+			<version>${javaFX.version}</version>
+			<type>pom</type>
 		</dependency>
 
 	</dependencies>
